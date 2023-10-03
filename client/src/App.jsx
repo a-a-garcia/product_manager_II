@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
 import Main from './views/Main';
 import Detail from './views/Detail';
+import UpdateProduct from './components/UpdateProduct';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} default/>
           <Route path="/api/product/:id" element={<Detail />} />
+          <Route path="/api/product/:id/edit" element={<UpdateProduct />} />
         </Routes>
       </BrowserRouter>
     </>
