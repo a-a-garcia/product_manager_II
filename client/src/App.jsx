@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ProductForm from './components/ProductForm'
+import React, { useState } from 'react';
+import axios from 'axios';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import './App.css';
+import Main from './views/Main';
+import Detail from './views/Detail';
 
 function App() {
   
 
   return (
     <>
-      <ProductForm />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} default/>
+          <Route path="/api/product/:id" element={<Detail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

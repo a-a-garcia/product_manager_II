@@ -1,7 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios';
 
-function ProductForm() {
+function ProductForm(props) {
+    const {products, setProducts} = props;
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
@@ -16,6 +17,7 @@ function ProductForm() {
         .then(res=>{
           console.log(res)
           console.log(res.data)
+          setProducts([...products, res.data])
         })
         .catch(err=>console.log(err))
       setTitle("");
@@ -26,6 +28,7 @@ function ProductForm() {
     return (
       <form onSubmit={onSubmitHandler}>
         <h1>Product Manager</h1>
+        <h2>Product Form</h2>
         <p>
           <label>Title</label><br/>
             <input type="text" onChange={(e)=>setTitle(e.target.value)} value={title} />

@@ -18,7 +18,13 @@ module.exports.index = (request, response) => {
 // request.body will contain something like {firstName: "Billy", lastName:"Washington"} from the client.
 module.exports.createProduct = (request, response) => {
     Product.create(request.body)
-        .then(person => response.json(person))
+        .then(product => response.json(product))
+        .catch(err => response.json(err))
+}
+
+module.exports.getProduct = (request, response) => {
+    Product.findOne({_id:request.params.id})
+        .then(product => response.json(product))
         .catch(err => response.json(err))
 }
 
